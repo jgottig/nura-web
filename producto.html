@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Receta · NURA Nutrición para mascotas</title>
+  <meta name="description" content="Ingredientes, información nutricional, conservación y guía de porciones de las recetas NURA. Entrega al día siguiente en Rosario y Gran Rosario." />
+  <meta name="theme-color" content="#1a4f37" />
+  <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <header class="nav solid" id="nav">
+    <div class="container">
+      <a href="index.html" class="nav-logo" aria-label="NURA, inicio">
+        <img class="logo-blanco" src="assets/img/logo-blanco.png" alt="NURA" width="126" height="34" />
+        <img class="logo-verde" src="assets/img/logo-verde.png" alt="NURA" width="126" height="34" />
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#nosotros">Nosotros</a></li>
+        <li><a href="index.html#recetas">Recetas</a></li>
+        <li><a href="index.html#como-funciona">Cómo funciona</a></li>
+        <li><a href="index.html#porciones">Porciones</a></li>
+        <li><a href="index.html#faq">Preguntas</a></li>
+      </ul>
+      <a class="btn btn-primary nav-cta" data-wa="Hola NURA! Quiero hacer un pedido 🐶" href="#">
+        <svg><use href="#i-whatsapp"/></svg> Hacé tu pedido
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
+    </div>
+  </header>
+
+  <main id="producto"><!-- generado por JS a partir de js/productos.js --></main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-logo">
+          <img src="assets/img/logo-blanco.png" alt="NURA" width="133" height="36" />
+          <p>Cocción natural. Ingredientes reales. Hecha con amor, pensada para ellos.</p>
+        </div>
+        <div>
+          <h4>Recetas</h4>
+          <ul id="footerRecetas"></ul>
+        </div>
+        <div>
+          <h4>NURA</h4>
+          <ul>
+            <li><a href="index.html#nosotros">Nosotros</a></li>
+            <li><a href="index.html#como-funciona">Cómo funciona</a></li>
+            <li><a href="index.html#porciones">Guía de porciones</a></li>
+            <li><a href="index.html#faq">Preguntas frecuentes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="#" data-wa="Hola NURA!">WhatsApp</a></li>
+            <li><a href="#" class="ig-link" target="_blank" rel="noopener">Instagram</a></li>
+            <li>Rosario y Gran Rosario</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> NURA · Nutrición para mascotas</span>
+        <span>Rosario, Santa Fe, Argentina</span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="wa-float" data-wa="Hola NURA! Quiero hacer un pedido 🐶" aria-label="Escribinos por WhatsApp"><svg><use href="#i-whatsapp"/></svg></a>
+
+  <script src="js/iconos.js"></script>
+  <script src="js/productos.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
