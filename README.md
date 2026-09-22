@@ -1,6 +1,6 @@
 # NURA · Nutrición para mascotas
 
-Sitio web de NURA, alimento natural para perros (Rosario y Gran Rosario).
+Sitio web de NURA, alimento natural para perros (Rosario).
 
 - `index.html`: landing
 - `producto.html?p=vacuna|pollo|cerdo`: detalle de cada receta

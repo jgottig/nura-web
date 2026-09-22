@@ -7,8 +7,8 @@
 const NURA_CONFIG = {
   // TODO: reemplazar por el número real (formato internacional, sin + ni espacios)
   whatsapp: "5493410000000",
-  instagram: "https://instagram.com/",
-  zona: "Rosario y Gran Rosario",
+  instagram: "https://www.instagram.com/nura.mascotas/",
+  zona: "Rosario",
 };
 
 const NURA_PRODUCTOS = [
@@ -126,6 +126,9 @@ const NURA_CONSERVACION = [
   { icono: "cal", texto: "Una vez descongelado, conservar en la heladera hasta 72 hs" },
   { icono: "reloj", texto: "Consumir antes de los 10 meses desde su elaboración" },
 ];
+
+// Carrusel de Instagram: imágenes en assets/img/ig/ (piezas del feed + fotos de redes)
+const NURA_INSTAGRAM = Array.from({ length: 15 }, (_, i) => `assets/img/ig/ig-${String(i + 1).padStart(2, "0")}.webp`);
 
 function nuraWhatsapp(mensaje) {
   return `https://wa.me/${NURA_CONFIG.whatsapp}?text=${encodeURIComponent(mensaje)}`;

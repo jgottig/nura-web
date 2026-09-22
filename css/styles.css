@@ -609,16 +609,73 @@ input[type="range"]::-moz-range-thumb {
 .entrega-mapa b { display: block; font-size: 17px; }
 .entrega-mapa span { font-size: 14px; color: var(--tinta-suave); }
 
-/* ---------- Galería / Comunidad ---------- */
-.comunidad { background: var(--crema-50); padding-top: 0; }
-.galeria {
-  display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px;
+/* ---------- Instagram (carrusel) ---------- */
+.instagram { background: var(--crema-50); overflow: hidden; }
+.ig-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; flex-wrap: wrap; margin-bottom: clamp(36px, 5vw, 56px); }
+.ig-head h2 { font-size: clamp(36px, 5.4vw, 68px); margin-top: 18px; max-width: 12ch; }
+.ig-perfil { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.ig-cuenta { display: flex; align-items: center; gap: 14px; }
+.ig-avatar {
+  width: 58px; height: 58px; border-radius: 50%; flex-shrink: 0;
+  display: grid; place-items: center;
+  background: var(--verde);
+  box-shadow: 0 0 0 3px var(--crema-50), 0 0 0 5px var(--mostaza);
 }
-.galeria figure { margin: 0; border-radius: var(--radio); overflow: hidden; aspect-ratio: 3 / 4; }
-.galeria figure:nth-child(even) { transform: translateY(40px); }
-.galeria img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s var(--ease); }
-.galeria figure:hover img { transform: scale(1.06); }
-.comunidad-cta { text-align: center; margin-top: 90px; }
+.ig-avatar img { width: 22px; height: auto; }
+.ig-cuenta b { display: block; font-size: 17px; color: var(--tinta); }
+.ig-cuenta small { font-size: 13.5px; color: var(--tinta-suave); }
+
+.ig-carrusel { position: relative; }
+.ig-track {
+  display: flex; gap: 16px;
+  overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: max(var(--gutter), calc((100vw - var(--max)) / 2 + var(--gutter)));
+  padding: 6px max(var(--gutter), calc((100vw - var(--max)) / 2 + var(--gutter)));
+  scrollbar-width: none;
+  cursor: grab;
+}
+.ig-track::-webkit-scrollbar { display: none; }
+.ig-track.arrastrando { cursor: grabbing; scroll-snap-type: none; }
+.ig-track.arrastrando a { pointer-events: none; }
+.ig-post {
+  position: relative; flex: 0 0 clamp(230px, 24vw, 310px);
+  aspect-ratio: 4 / 5; border-radius: var(--radio); overflow: hidden;
+  scroll-snap-align: start; background: var(--crema);
+  user-select: none; -webkit-user-drag: none;
+}
+.ig-post img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s var(--ease); pointer-events: none; }
+.ig-post::after {
+  content: ""; position: absolute; inset: 0;
+  background: rgba(15, 50, 35, 0.55);
+  opacity: 0; transition: opacity 0.4s;
+}
+.ig-post .ig-icono {
+  position: absolute; z-index: 1; left: 50%; top: 50%;
+  width: 54px; height: 54px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--crema-50); color: var(--verde);
+  transform: translate(-50%, -50%) scale(0.6); opacity: 0;
+  transition: transform 0.45s var(--ease), opacity 0.35s;
+}
+.ig-post .ig-icono svg { width: 26px; height: 26px; }
+.ig-post:hover img { transform: scale(1.06); }
+.ig-post:hover::after { opacity: 1; }
+.ig-post:hover .ig-icono { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+
+.ig-controles { display: flex; align-items: center; gap: 30px; margin-top: 30px; }
+.ig-progreso { flex: 1; height: 3px; border-radius: 3px; background: rgba(26, 79, 55, 0.12); overflow: hidden; }
+.ig-progreso span { display: block; height: 100%; width: 20%; border-radius: 3px; background: var(--verde); transition: transform 0.3s var(--ease); transform-origin: left; }
+.ig-flechas { display: flex; gap: 10px; }
+.ig-flechas button {
+  width: 52px; height: 52px; border-radius: 50%;
+  border: 2px solid var(--verde); background: transparent; color: var(--verde);
+  display: grid; place-items: center;
+  transition: background 0.3s, color 0.3s;
+}
+.ig-flechas button:hover { background: var(--verde); color: var(--crema); }
+.ig-flechas button svg { width: 20px; height: 20px; }
+#igPrev svg { transform: rotate(180deg); }
 
 /* ---------- FAQ ---------- */
 .faq { background: var(--crema); }
@@ -802,8 +859,6 @@ input[type="range"]::-moz-range-thumb {
 @media (max-width: 1080px) {
   .pilares-grid, .pasos-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
-  .galeria { grid-template-columns: repeat(3, 1fr); }
-  .galeria figure:nth-child(n+4) { display: none; }
 }
 
 @media (max-width: 900px) {
@@ -846,14 +901,13 @@ input[type="range"]::-moz-range-thumb {
   .fila-porcion .gr { grid-column: 1 / -1; text-align: left; border-left: 0; border-top: 2px solid var(--bordo); padding: 10px 0 0; }
   .fila-porcion.activa { transform: none; }
   .calc-resultado { grid-template-columns: 1fr; }
-  .galeria { grid-template-columns: repeat(2, 1fr); }
-  .galeria figure:nth-child(n+3) { display: none; }
-  .galeria figure:nth-child(even) { transform: none; }
-  .comunidad-cta { margin-top: 40px; }
   .footer-grid { grid-template-columns: 1fr; }
   .proceso-grid { grid-template-columns: 1fr; grid-auto-rows: 260px; }
   .p1, .p2, .p3, .p4, .p5, .p6 { grid-row: span 1; grid-column: auto; }
   .p5 { grid-row: span 1; }
   .entrega-mapa { left: 16px; right: 16px; bottom: 16px; }
   .wa-float { width: 56px; height: 56px; right: 16px; bottom: 16px; }
+  .ig-post { flex-basis: 72vw; }
+  .ig-flechas { display: none; }
+  .ig-controles { padding-right: 90px; }
 }

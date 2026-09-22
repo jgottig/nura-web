@@ -36,7 +36,7 @@
       a.rel = "noopener";
     });
   }
-  $$("#igLink, .ig-link").forEach((a) => (a.href = NURA_CONFIG.instagram));
+  $$(".ig-link").forEach((a) => (a.href = NURA_CONFIG.instagram));
   const year = $("#year");
   if (year) year.textContent = new Date().getFullYear();
 
@@ -122,6 +122,73 @@
     };
     peso.addEventListener("input", update);
     update();
+  }
+
+  /* ---------- Carrusel de Instagram ---------- */
+  const igTrack = $("#igTrack");
+  if (igTrack) {
+    igTrack.innerHTML = NURA_INSTAGRAM.map(
+      (src, i) => `
+      <a class="ig-post" href="${NURA_CONFIG.instagram}" target="_blank" rel="noopener" draggable="false" aria-label="Ver en Instagram (${i + 1})">
+        <img src="${src}" alt="Publicación de NURA en Instagram" loading="lazy" draggable="false" />
+        <span class="ig-icono"><svg><use href="#i-instagram"/></svg></span>
+      </a>`
+    ).join("");
+
+    const barra = $("#igBarra");
+    const paso = () => {
+      const card = igTrack.querySelector(".ig-post");
+      return card ? card.offsetWidth + 16 : 300;
+    };
+    const max = () => igTrack.scrollWidth - igTrack.clientWidth;
+    const mover = (dir) => {
+      const alFinal = igTrack.scrollLeft >= max() - 4;
+      if (dir > 0 && alFinal) igTrack.scrollTo({ left: 0, behavior: "smooth" });
+      else igTrack.scrollBy({ left: dir * paso(), behavior: "smooth" });
+    };
+    const progreso = () => {
+      const visible = igTrack.clientWidth / igTrack.scrollWidth;
+      const pos = max() > 0 ? igTrack.scrollLeft / max() : 0;
+      barra.style.width = `${visible * 100}%`;
+      barra.style.transform = `translateX(${pos * (1 / visible - 1) * 100}%)`;
+    };
+    igTrack.addEventListener("scroll", progreso, { passive: true });
+    window.addEventListener("resize", progreso);
+    progreso();
+
+    $("#igPrev").addEventListener("click", () => mover(-1));
+    $("#igNext").addEventListener("click", () => mover(1));
+
+    // Avance automático (se pausa al interactuar o si no está a la vista)
+    let enPausa = false, visible = false;
+    setInterval(() => { if (visible && !enPausa && !document.hidden) mover(1); }, 3500);
+    ["pointerenter", "focusin", "touchstart"].forEach((ev) => igTrack.addEventListener(ev, () => (enPausa = true), { passive: true }));
+    ["pointerleave", "focusout"].forEach((ev) => igTrack.addEventListener(ev, () => (enPausa = false)));
+    new IntersectionObserver(([e]) => (visible = e.isIntersecting), { threshold: 0.3 }).observe(igTrack);
+
+    // Arrastrar con el mouse (en touch se usa el scroll nativo)
+    let x0 = 0, s0 = 0, arrastre = false, movido = false;
+    igTrack.addEventListener("pointerdown", (e) => {
+      if (e.pointerType !== "mouse") return;
+      arrastre = true; movido = false; x0 = e.clientX; s0 = igTrack.scrollLeft;
+    });
+    window.addEventListener("pointermove", (e) => {
+      if (!arrastre) return;
+      const dx = e.clientX - x0;
+      if (Math.abs(dx) > 5) { movido = true; igTrack.classList.add("arrastrando"); }
+      igTrack.scrollLeft = s0 - dx;
+    });
+    window.addEventListener("pointerup", () => {
+      if (!arrastre) return;
+      arrastre = false;
+      igTrack.classList.remove("arrastrando");
+      if (movido) {
+        // Acomodar a la tarjeta más cercana
+        const p = paso();
+        igTrack.scrollTo({ left: Math.round(igTrack.scrollLeft / p) * p, behavior: "smooth" });
+      }
+    });
+    igTrack.addEventListener("click", (e) => { if (movido) { e.preventDefault(); movido = false; } }, true);
   }
 
   /* ---------- Página de producto ---------- */
