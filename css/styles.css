@@ -726,6 +726,18 @@ input[type="range"]::-moz-range-thumb {
 .footer h4 { color: var(--crema); font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 16px; }
 .footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .footer a:hover { color: var(--mostaza); }
+.footer-redes { display: flex; gap: 12px; }
+.footer .red {
+  width: 48px; height: 48px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: rgba(235, 231, 222, 0.1); color: var(--crema);
+  transition: background 0.3s, color 0.3s, transform 0.35s var(--ease);
+}
+.footer .red svg { width: 22px; height: 22px; }
+.footer .red:hover { transform: translateY(-3px); color: #fff; }
+.footer .red-wa:hover { background: #25d366; }
+.footer .red-ig:hover { background: radial-gradient(circle at 30% 110%, #fdc468 0%, #df4996 45%, #7a3ee0 100%); }
+.footer-zona { margin-top: 16px; }
 .footer-bottom {
   margin-top: 56px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.1);
   display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; font-size: 13.5px;
