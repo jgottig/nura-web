@@ -5,8 +5,8 @@
    ========================================================== */
 
 const NURA_CONFIG = {
-  // TODO: reemplazar por el número real (formato internacional, sin + ni espacios)
-  whatsapp: "5493410000000",
+  // Formato internacional, sin + ni espacios (se usa en todos los botones de WhatsApp)
+  whatsapp: "5493416432696",
   instagram: "https://www.instagram.com/nura.mascotas/",
   zona: "Rosario",
 };
