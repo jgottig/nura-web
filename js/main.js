@@ -73,6 +73,26 @@
       (p) => `<li><a href="producto.html?p=${p.id}">${p.nombre}</a></li>`
     ).join("");
 
+  /* ---------- Precios ---------- */
+  const preciosGrid = $("#preciosGrid");
+  if (preciosGrid) {
+    const base = NURA_PRECIOS[0].total;
+    preciosGrid.innerHTML = NURA_PRECIOS.map((pr, i) => {
+      const unit = pr.total / pr.unidades;
+      const ahorro = Math.round((1 - unit / base) * 100);
+      const label = pr.unidades === 1 ? "1 bolsa" : `${pr.unidades} bolsas`;
+      return `
+      <article class="precio${pr.destacado ? " destacado" : ""} reveal d${i % 4}">
+        ${pr.nota ? `<span class="precio-nota">${pr.nota}</span>` : ""}
+        <h3>${pr.unidades === 1 ? "Por unidad" : `Por ${pr.unidades} unidades`}</h3>
+        <div class="precio-total">${nuraPesos(pr.total)}</div>
+        <div class="precio-unit">${pr.unidades === 1 ? "Bolsa de 400 g" : `${nuraPesos(unit)} por bolsa`}</div>
+        ${ahorro > 0 ? `<span class="precio-ahorro">Ahorrás ${ahorro}%</span>` : `<span class="precio-ahorro vacio">Precio de lista</span>`}
+        <a href="#" class="btn ${pr.destacado ? "btn-primary" : "btn-verde"}" data-wa="Hola NURA! Quiero pedir ${label} (${nuraPesos(pr.total)}) 🐶"><svg><use href="#i-whatsapp"/></svg> Pedir</a>
+      </article>`;
+    }).join("");
+  }
+
   /* ---------- Marquee (duplicar para loop infinito) ---------- */
   const mq = $("#marquee");
   if (mq) mq.innerHTML += mq.innerHTML;
@@ -252,6 +272,7 @@
                   </div>
                 </div>
                 <a class="btn btn-verde" id="pedirBtn" href="#" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg> Pedir por WhatsApp</a>
+                <div class="precio-prod"><b>${nuraPesos(NURA_PRECIOS[0].total)}</b> por bolsa · <a href="index.html#precios">Ver packs con descuento</a></div>
                 <div class="envio"><svg><use href="#i-truck"/></svg> Entrega al día siguiente en ${NURA_CONFIG.zona}.</div>
               </div>
             </div>

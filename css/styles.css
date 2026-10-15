@@ -387,12 +387,6 @@ p { margin: 0; }
   display: grid; place-items: center;
   overflow: hidden;
 }
-.receta-img::before {
-  content: ""; position: absolute; width: 78%; aspect-ratio: 1; border-radius: 50%;
-  background: var(--c); opacity: 0.16;
-  transition: transform 0.7s var(--ease);
-}
-.receta:hover .receta-img::before { transform: scale(1.12); }
 .receta-img img {
   position: relative; width: 70%; height: auto;
   filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.18));
@@ -770,10 +764,6 @@ input[type="range"]::-moz-range-thumb {
   position: relative; aspect-ratio: 1; border-radius: var(--radio-lg);
   background: var(--blanco); display: grid; place-items: center; overflow: hidden;
 }
-.prod-visual::before {
-  content: ""; position: absolute; width: 80%; aspect-ratio: 1; border-radius: 50%;
-  background: var(--c); opacity: 0.14;
-}
 .prod-visual img.bolsa {
   position: relative; width: 68%; filter: drop-shadow(0 35px 35px rgba(0, 0, 0, 0.2));
   animation: flotar 6s ease-in-out infinite;
@@ -853,6 +843,39 @@ input[type="range"]::-moz-range-thumb {
 #tablaPorcionesProd { max-width: 860px; }
 .otras .recetas-grid { grid-template-columns: repeat(2, 1fr); max-width: 860px; margin: 0 auto; }
 
+/* ---------- Precios ---------- */
+.precios { background: var(--crema); padding-top: 0; }
+.precios-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; align-items: stretch; }
+.precio {
+  position: relative; display: flex; flex-direction: column; align-items: flex-start;
+  background: var(--blanco); border-radius: var(--radio); padding: 30px 24px 24px;
+  border: 2px solid transparent;
+}
+.precio.destacado { background: var(--verde); color: var(--crema); border-color: var(--mostaza); }
+.precio-nota {
+  position: absolute; top: -13px; left: 24px;
+  padding: 5px 12px; border-radius: 999px; background: var(--bordo); color: #fff;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+}
+.precio.destacado .precio-nota { background: var(--mostaza); color: var(--verde-900); }
+.precio h3 { font-size: 17px; font-weight: 700; color: var(--tinta-suave); }
+.precio.destacado h3 { color: var(--crema); opacity: 0.85; }
+.precio-total { font-size: clamp(30px, 2.6vw, 38px); font-weight: 800; letter-spacing: -0.02em; color: var(--tinta); margin-top: 10px; line-height: 1; }
+.precio.destacado .precio-total { color: #fff; }
+.precio-unit { font-size: 14px; color: var(--tinta-suave); margin-top: 8px; }
+.precio.destacado .precio-unit { color: var(--crema); opacity: 0.85; }
+.precio-ahorro {
+  display: inline-block; margin-top: 14px; padding: 4px 10px; border-radius: 999px;
+  background: rgba(26, 79, 55, 0.1); color: var(--verde); font-size: 13px; font-weight: 700;
+}
+.precio-ahorro.vacio { background: transparent; color: var(--tinta-suave); padding-left: 0; font-weight: 600; }
+.precio.destacado .precio-ahorro { background: var(--mostaza); color: var(--verde-900); }
+.precio .btn { margin-top: auto; width: 100%; justify-content: center; }
+.precio-ahorro + .btn { margin-top: 22px; }
+.precio-prod { margin-top: 14px; font-size: 15px; color: var(--tinta-suave); }
+.precio-prod b { font-size: 20px; color: var(--tinta); }
+.precio-prod a { color: var(--c, var(--verde)); font-weight: 700; text-decoration: underline; }
+
 /* ---------- Reveal on scroll ---------- */
 .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
 .reveal.visible { opacity: 1; transform: none; }
@@ -870,6 +893,7 @@ input[type="range"]::-moz-range-thumb {
    ========================================================== */
 @media (max-width: 1080px) {
   .pilares-grid, .pasos-grid { grid-template-columns: repeat(2, 1fr); }
+  .precios-grid { grid-template-columns: repeat(3, 1fr); row-gap: 30px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
@@ -907,6 +931,7 @@ input[type="range"]::-moz-range-thumb {
   .hero-ctas .btn { flex: 1 1 100%; }
   .hero-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding-right: 60px; font-size: 14px; }
   .pilares-grid, .pasos-grid { grid-template-columns: 1fr; }
+  .precios-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
   .sin-artificiales { padding: 24px; }
   .fila-porcion { grid-template-columns: 60px 1fr; gap: 14px; padding: 16px; }
   .fila-porcion .perro { width: 60px; height: 50px; }
