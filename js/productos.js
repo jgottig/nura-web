@@ -8,7 +8,7 @@ const NURA_CONFIG = {
   // Formato internacional, sin + ni espacios (se usa en todos los botones de WhatsApp)
   whatsapp: "5493416432696",
   instagram: "https://www.instagram.com/nura.mascotas/",
-  zona: "Rosario",
+  zona: "Rosario, Funes y Roldán",
 };
 
 const NURA_PRODUCTOS = [
@@ -104,6 +104,19 @@ const NURA_PRODUCTOS = [
     fotos: ["assets/img/trio-bolsas.webp", "assets/img/plato.webp", "assets/img/placa-3a.webp"],
   },
 ];
+
+// Precios por cantidad de bolsas (se pueden combinar recetas dentro de cada pack)
+const NURA_PRECIOS = [
+  { unidades: 1, total: 5500 },
+  { unidades: 7, total: 34300, nota: "Una semana" },
+  { unidades: 30, total: 130000, nota: "Un mes", destacado: true },
+  { unidades: 45, total: 180000 },
+  { unidades: 60, total: 222000, nota: "Mejor precio" },
+];
+
+function nuraPesos(n) {
+  return "$" + Math.round(n).toLocaleString("es-AR");
+}
 
 // Guía de porciones (perro adulto, actividad normal) — fuente: "Nura - Tabla Porcion.pdf"
 const NURA_PORCIONES = [
