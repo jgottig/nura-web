@@ -20,7 +20,7 @@ const NURA_PRODUCTOS = [
     peso: "400 grs",
     color: "#ad3a4d",
     colorSuave: "#f3dfe2",
-    bolsa: "assets/img/bolsa-vacuna.webp",
+    bolsa: "assets/img/bolsa-vacuna-real.webp",
     bajada: "Roast beef cocido al vapor con avena y zanahoria. La receta con más fibra de la línea, con energía para todo el día.",
     descripcion:
       "Nuestra receta de carne vacuna combina roast beef de calidad humana con avena y zanahoria, cocidos al vapor para conservar sus nutrientes. La avena aporta fibra y energía de liberación lenta, y el núcleo vitamínico-mineral con probióticos completa el equilibrio para una digestión sana.",
@@ -40,7 +40,7 @@ const NURA_PRODUCTOS = [
       hidratos: "16,70 g",
       fibra: "3,59 g",
     },
-    fotos: ["assets/img/vacuna-mano.webp", "assets/img/momento-vacuna.webp", "assets/img/placa-1a.webp"],
+    fotos: ["assets/img/vacuna-plato.webp", "assets/img/vacuna-perro.webp", "assets/img/placa-1a.webp"],
   },
   {
     id: "pollo",
@@ -50,7 +50,7 @@ const NURA_PRODUCTOS = [
     peso: "400 grs",
     color: "#d9962f",
     colorSuave: "#fbecd2",
-    bolsa: "assets/img/bolsa-pollo.webp",
+    bolsa: "assets/img/bolsa-pollo-real.webp",
     bajada: "Pechuga de pollo con quinoa y zapallo anco. Suave, liviana y la receta con más proteína de la línea.",
     descripcion:
       "Pechuga de pollo fresca, quinoa y zapallo anco, cocidos al vapor. Es nuestra receta con más proteína (13,17 g cada 100 g): liviana, suave y fácil de digerir. Enriquecida con núcleo vitamínico-mineral y probióticos.",
@@ -70,7 +70,7 @@ const NURA_PRODUCTOS = [
       hidratos: "16,20 g",
       fibra: "2,46 g",
     },
-    fotos: ["assets/img/pollo-mano.webp", "assets/img/galgo-pollo.webp", "assets/img/placa-2a.webp"],
+    fotos: ["assets/img/pollo-plato.webp", "assets/img/pollo-perro.webp", "assets/img/placa-2a.webp"],
   },
   {
     id: "cerdo",
@@ -80,7 +80,7 @@ const NURA_PRODUCTOS = [
     peso: "400 grs",
     color: "#e0788f",
     colorSuave: "#fde4ea",
-    bolsa: "assets/img/bolsa-cerdo.webp",
+    bolsa: "assets/img/bolsa-cerdo-real.webp",
     bajada: "Carne de cerdo con arroz, boniato y manzana. Una receta sabrosa y distinta para variar el menú de todos los días.",
     descripcion:
       "Carne de cerdo con arroz, boniato y un toque de manzana, cocidos al vapor. Una receta sabrosa, ideal para rotar proteínas y sumar variedad a su alimentación. Como todas nuestras recetas, lleva núcleo vitamínico-mineral y probióticos.",
@@ -101,7 +101,7 @@ const NURA_PRODUCTOS = [
       hidratos: "18,28 g",
       fibra: "1,56 g",
     },
-    fotos: ["assets/img/trio-bolsas.webp", "assets/img/plato.webp", "assets/img/placa-3a.webp"],
+    fotos: ["assets/img/cerdo-flores.webp", "assets/img/cerdo-perro.webp", "assets/img/placa-3a.webp"],
   },
 ];
 
