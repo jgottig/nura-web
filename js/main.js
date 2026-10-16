@@ -350,10 +350,7 @@
       b.addEventListener("click", () => {
         $$(".prod-thumbs button", root).forEach((x) => x.classList.remove("activo"));
         b.classList.add("activo");
-        const esBolsa = b.dataset.src === p.bolsa;
         img.src = b.dataset.src;
-        img.classList.toggle("bolsa", esBolsa);
-        img.style.cssText = esBolsa ? "" : "position:absolute;inset:0;width:100%;height:100%;object-fit:cover";
       })
     );
 
@@ -388,6 +385,8 @@
   /* ---------- Video: pausar si no está a la vista ---------- */
   const video = $(".hero-video");
   if (video) {
+    // En pantallas verticales, poster vertical (el video lo elige <source media>)
+    if (!matchMedia("(min-aspect-ratio: 1/1)").matches && video.dataset.posterVertical) video.poster = video.dataset.posterVertical;
     new IntersectionObserver(([e]) => (e.isIntersecting ? video.play().catch(() => {}) : video.pause())).observe(video);
   }
 })();
