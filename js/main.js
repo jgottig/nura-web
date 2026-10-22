@@ -285,7 +285,7 @@
           <div class="section-head">
             <span class="eyebrow reveal" style="color:${p.color}">Ingredientes</span>
             <h2 class="reveal d1">Lo que ves es lo que come.</h2>
-            <p class="reveal d2">Ingredientes frescos de calidad humana, cocidos al vapor. Sin colorantes ni saborizantes artificiales.</p>
+            <p class="reveal d2">Ingredientes frescos de calidad humana, cocidos al vacío. Sin colorantes ni saborizantes artificiales.</p>
           </div>
           <div class="ingredientes-grid">
             ${p.ingredientes
